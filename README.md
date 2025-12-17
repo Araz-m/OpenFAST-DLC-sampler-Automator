@@ -113,48 +113,46 @@ python project.py
 
 VS Code is recommended for better scrollback and monitoring of long runs.
 
------------------------------------------------------------------------------------------------
-# Installation
-1. Clone the Repository:
-   git clone https://github.com/Araz-m/OpenFAST-DLC-Runner.git
-cd OpenFast_Automating-DLC-Simulations_Optimus_295_20_Hochschule-Flensburg
+---
 
-   
-2. Install Dependencies: Ensure you have Python 3.x installed. Then install the required Python packages:
-   pip install -r requirements.txt
-   
-4. Verify OpenFAST Installation:
+## Output Organization
 
-- Confirm that OpenFAST is installed on your machine.
-- Place the start_OpenFAST_v3-41.bat file in the appropriate directory, and update its path in the script if necessary.
-   
-# Usage
+Simulation outputs are automatically:
 
-1. Prepare Input Files:
+- Moved to the `Outputs/<DLC>` directory corresponding to the DLC being run
 
-  - Organize wind files (.bts) in the Wind directory.
-  - Place HydroDyn configuration files (.dat) in the Wave directory.
-  
-2. Run the Script: Execute the automation script:
-   python project.py
-   # I recommend to run the code in VScode because in contrast with cmd it can be scrolled for furthure checks
-   
-4. Outputs:
+- Renamed using the format that is needed
 
-- Simulation outputs will be organized in the Outputs/DLC12 directory.
-- Files are renamed using the format OPT-MP-V<WindSpeed>_S<Seed> for easier identification.
---------------------------------------------------------------------------------------
+Example:
+
+```bash
+OPT-MP-V{WindSpeed}_S{Seed}.out
+OPT-MP-V{WindSpeed}_S{Seed}.outb
+```
+
+This structure simplifies post-processing and traceability.
+
+---
+
 # Project Structure
-📂 OpenFast_Automating-DLC-Simulations_Optimus_295_20_Hochschule-Flensburg
+📂 OpenFast-DLC-Runner
 ├── 📁 DLC12             # Main Directory
 │  └── 📂 Outputs           # Outputs are generated here
 │     └── 📂 DLC12         # Organized simulation results
-│  └── project.py           # Main script for automation
-│  └── test_project.py      # Test script for custom functions
+│  └── OpenFast-DLC-Runner.py      # Main script for automation
+│  └── start_OpenFAST_v3-41.bat
+│  └── openfast related files and directories
 ├── 📁 Wind              # Contains .bts wind files
 ├── 📁 Wave              # Contains HydroDyn input files
-├── requirements.txt     # Python dependencies
-└── README.md            # Project documentation
+
+```bash
+
+> ⚠️ Note: The exact file names and folder arrangement may vary depending on your project setup. Ensure that `project.py`, OpenFAST input files, and the batch file are located in the same DLC folder when running the script.
+
+```
+
+---
+
 
 ----------------------------------------------------------------------------
 # Contributing

@@ -147,7 +147,8 @@ This structure simplifies post-processing and traceability.
 
 ```bash
 
-> ⚠️ Note: The exact file names and folder arrangement may vary depending on your project setup. Ensure that `project.py`, OpenFAST input files, and the batch file are located in the same DLC folder when running the script.
+⚠️ Note: The exact file names and folder arrangement may vary depending on your project setup.
+Ensure that `project.py`, OpenFAST input files, and the batch file are located in the same DLC folder when running the script.
 
 ```
 

@@ -1,17 +1,118 @@
 # OpenFAST-DLC-Runner
- This project facilitates the execution and management of OpenFAST simulations by   dynamically updating input files, running simulations, and organizing outputs for Design Load Cases.
 
-Originally developed during the [Optimus 295-20 wind turbine project](https://github.com/WindEnergyEngineering/Optimus-295-20/tree/master/OpenFAST/Optimus-295-20) at Flensburg University of Applied Sciences.
---------------------------------------------------------------------------------
-# Features
+A Python-based automation script for running sequential OpenFAST Design Load Case
+(DLC) simulations by updating input files, executing OpenFAST, and organizing
+simulation outputs.
 
-  - Automatically updates and configures OpenFAST input files:
-    - Updates wind files (.bts)
-    - Dynamically manages HydroDyn configuration files.
-    - Edits the .fst file for hydrodynamic inputs.
-  - Automates the execution of OpenFAST simulations using a batch file
-  - Organizes simulation outputs by wind speed and seed for easy post-processing.
-   
+This tool was developed for project-specific DLC studies where a large number of
+wind seeds and wind speeds must be simulated without manual intervention.
+
+---
+
+## Overview
+
+Running multiple OpenFAST simulations for a single DLC often requires repetitive
+manual steps such as updating wind files, modifying HydroDyn inputs, executing
+OpenFAST, and organizing output files.
+
+OpenFAST-DLC-Runner automates this workflow by iterating over a set of wind files,
+updating the corresponding OpenFAST input files, launching simulations via a
+batch file, and systematically renaming and storing outputs for post-processing.
+
+The script is designed as a **project-level automation utility**, not as a
+general-purpose OpenFAST framework.
+
+---
+
+## Key Capabilities
+
+- Iterates over multiple `.bts` wind files
+- Extracts wind speed and seed information from filenames
+- Automatically updates:
+  - Inflow wind file references (`InflowFile.dat`)
+  - HydroDyn input files based on wind speed
+  - HydroDyn references in the `.fst` file
+- Executes OpenFAST simulations via a Windows batch file
+- Automatically handles command prompt interaction
+- Organizes and renames output files by wind speed and seed
+- Reduces the need for manual supervision during long DLC runs
+
+---
+
+## Typical Use Cases
+
+- Running many wind seeds for a single DLC
+- Automating repetitive OpenFAST input updates
+- Overnight or long-duration simulation campaigns
+- Academic and research-based DLC studies
+
+---
+
+## Installation
+
+### Requirements
+
+- Windows operating system
+- Python 3.x
+- OpenFAST installed and accessible via batch file
+
+### Python Dependencies
+
+Install required packages:
+ pyautogui
+ 
+```bash
+pip install pyautogui
+```
+
+### Required libraries include:
+
+- pyautogui
+
+- os, shutil, subprocess (standard library)
+
+---
+
+## Usage
+### 1. Prepare Input Files
+
+- Place all wind files (.bts) in the Wind directory
+
+- Place HydroDyn input files in the Wave directory
+
+- Ensure wind file names follow a consistent naming convention
+  (used to extract wind speed and seed)
+
+### 2. Configure Script Paths
+
+Edit the following paths in the script:
+
+```bash
+wind_directory = "../Wind"
+hydrodyn_directory = "../Wave"
+main_directory = "path/to/DLC_directory"
+```
+
+Ensure that:
+
+- InflowFile.dat
+
+- .fst file
+
+- start_OpenFAST_v3-41.bat
+
+exist in the main directory.
+
+### 3. Run the Script
+
+Execute the script from a terminal or IDE (VS Code recommended):
+
+```bash
+python project.py
+```
+
+VS Code is recommended for better scrollback and monitoring of long runs.
+
 -----------------------------------------------------------------------------------------------
 # Installation
 1. Clone the Repository:

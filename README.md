@@ -182,7 +182,11 @@ This tool is part of a broader OpenFAST automation workflow:
 
 ---
 
-A detailed *pdf manual* added as a guide
+## User Guide / PDF Manual
+
+A detailed PDF manual (`OpenFAST-DLC-Runner-Manual.pdf`) is included for step-by-step instructions, particularly useful for users who are new to OpenFAST or Python scripting.
+
+---
 
 ## License
 
